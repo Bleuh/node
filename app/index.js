@@ -12,9 +12,19 @@ var monServeur=function(requete, reponse){
 
 	var sortie ;
 
-	if(slug[1] != '' && slug[1] != 'favicon.ico'){
-		reponse.writeHead(200,{"Content-Type": "text/plain; charset=UTF-8"}); 
-		sortie = "La date est " + dates.ajouteDate(slug[1]);
+	if(slug[1] != 'favicon.ico'){
+
+		var obj = dates.createObjFromSlug(slug[1]);
+		var bool = typeof obj.date !== 'undefined' && typeof obj.operator !== 'undefined' && typeof obj.time !== 'undefined';
+		// faire les tests et erreur possible
+		if (bool) {
+			reponse.writeHead(200,{"Content-Type": "text/plain; charset=UTF-8"}); 
+			sortie = "La date est " + dates.getDate(obj);
+
+		}
+		else{
+			sortie = "invalid url";
+		}
 		reponse.end(sortie);
 	}
 	else{
