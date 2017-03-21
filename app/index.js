@@ -7,13 +7,14 @@ var dates = require('./dates') ;
 
 var monServeur=function(requete, reponse){
 
-  	var parsedUrl = url.parse(requete.url, true);
-	var sortie ;
-  	var param = parsedUrl.query;
+ 	var date = requete.url;
+	var slug = date.split('/');
 
-	if(param.time != null){
+	var sortie ;
+
+	if(slug[1] != '' && slug[1] != 'favicon.ico'){
 		reponse.writeHead(200,{"Content-Type": "text/plain; charset=UTF-8"}); 
-		sortie = "La date est " + dates.ajouteDate(param.time);
+		sortie = "La date est " + dates.ajouteDate(slug[1]);
 		reponse.end(sortie);
 	}
 	else{
