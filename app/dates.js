@@ -8,13 +8,7 @@
 //   	return dateReturn ;
 // };
 
-exports.ajouteDate = function(slug){
-	var date = this.getDate(slug);
-  	return date ;
-}; 
-
-exports.getDate = function(slug){
-	var obj = this.createObjFromSlug(slug);
+exports.getDate = function(obj){
   	return this.createNewDate(obj.date, obj.operator, obj.time);
 }; 
 
