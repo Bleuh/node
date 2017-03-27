@@ -12,14 +12,17 @@ var monServeur=function(requete, reponse){
 
 	var sortie ;
 
-	if(slug[1] != 'favicon.ico'){
+	if(slug[1] != 'favicon.ico' && slug[1] != ''){
 
-		var obj = dates.createObjFromSlug(slug[1]);
-		var bool = typeof obj.date !== 'undefined' && typeof obj.operator !== 'undefined' && typeof obj.time !== 'undefined';
+		var objSlug = dates.createObjFromSlug(slug[1]);//Object qui contient les partie de la requete
+		var objTime = dates.createObjFromTime(objSlug.time);//object qui contient les 4 parties de l'ajout de date(jours, heures etc..)
+		bool = true;
 		// faire les tests et erreur possible
-		if (bool) {
+		// Pourquoi pas ajouter une fonction dans dates.js ? Hein Emma ;) Genre tu fais :
+		// var bool = dates.test(objSlug, objTime)
+		if (true) {//si c'est bon on va ici sinon on affiche une erreur
 			reponse.writeHead(200,{"Content-Type": "text/plain; charset=UTF-8"}); 
-			sortie = "La date est " + dates.getDate(obj);
+			sortie = "La date est " + dates.getDate(objslug);
 
 		}
 		else{
