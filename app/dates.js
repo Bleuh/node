@@ -106,7 +106,6 @@ exports.createObjFromTime = function(time){
 };
 
 exports.test = function(obj){
-	console.log(obj);
 	if (obj.date == '' || obj.operator == '' || obj.time == '') {
 		return false;
 	}
@@ -114,7 +113,7 @@ exports.test = function(obj){
 		return false;
 	}
 	if (!(obj.operator == '+' || obj.operator == '-')) {
-
+		return false;
 	}
 	if (!this.testTime(obj.time)) {
 		return false;
