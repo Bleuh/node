@@ -106,11 +106,15 @@ exports.createObjFromTime = function(time){
 };
 
 exports.test = function(obj){
+	console.log(obj);
 	if (obj.date == '' || obj.operator == '' || obj.time == '') {
 		return false;
 	}
 	if (new Date(obj.date) == 'Invalid Date') {
 		return false;
+	}
+	if (!(obj.operator == '+' || obj.operator == '-')) {
+
 	}
 	if (!this.testTime(obj.time)) {
 		return false;
@@ -121,7 +125,7 @@ exports.test = function(obj){
 
 exports.testTime = function(time){
 	//contient au moin 4 chiffres avec le patern
-	var pattern = /\d+d\d+h\d+m\d+s/g;
+	var pattern = /^\d+d\d+h\d+m\d+s$/g;
 	if(!pattern.test(time)){
 		return false;
 	}
