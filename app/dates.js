@@ -1,6 +1,12 @@
 exports.getDate = function(obj){
-  	return this.createNewDate(obj.date, obj.operator, obj.time);
-}; 
+  return this.createNewDate(obj.date, obj.operator, obj.time);
+    // if ( obj.time != null ){
+    //   return this.createNewDate(obj.date, obj.operator, obj.time);
+    // }
+    // else{
+    //   return false;
+    // }
+};
 
 exports.createNewDate = function(date, operator, time){
 	var time = this.createObjFromTime(time);
@@ -37,7 +43,7 @@ exports.changeHours = function(date, operator, hours){
     	}
 	}
   	return dateResult;
-}; 
+};
 
 exports.changeMin= function(date, operator, min){
 	var dateResult = date;
@@ -51,7 +57,7 @@ exports.changeMin= function(date, operator, min){
     	dateResult.setMinutes(newMinutes);
 	}
   	return dateResult;
-}; 
+};
 
 exports.changeSec= function(date, operator, sec){
 	var dateResult = date;
@@ -65,7 +71,7 @@ exports.changeSec= function(date, operator, sec){
     	dateResult.setSeconds(newSec);
 	}
   	return dateResult;
-}; 
+};
 
 exports.createObjFromSlug = function(slug){
 	var splited = slug.split("+");
@@ -89,15 +95,58 @@ exports.createObjFromSlug = function(slug){
 };
 
 exports.createObjFromTime = function(time){
-	var days = time.split("d");
-	var hours = days[1].split("h");
-	var min = hours[1].split("m");
-	var sec = min[1].split("s");
-	var obj = {
-	    days:days[0],
-	    hours:hours[0],
-	    min:min[0],
-	    sec:sec[0]
-	};
-  	return obj;
+
+  var days = time.split("d");
+  var hours = days[1].split("h");
+  var min = hours[1].split("m");
+  var sec = min[1].split("s");
+
+  // var hours;
+  // var min;
+  // var sec;
+  // if (days[1] != undefined){
+  //   hours = days[1].split("h");
+  // }
+  // else{
+  //   hours = 0;
+  // }
+  // if (hours[1] != undefined){
+  //   min = hours[1].split("m");
+  // }
+  // else{
+  //   min = 0;
+  // }
+  // if (min[1] != undefined){
+  //   sec = min[1].split("s");
+  // }
+  // else{
+  //   sec = 0;
+  // }
+
+  // if (days[1].indexOf("h") == 1){
+  //       var hours = days[1].split("h");
+  // }
+  // else{
+  //   var hours = 0;
+  // }
+
+    var obj = {
+        days:days[0],
+        hours:hours[0],
+        min:min[0],
+        sec:sec[0]
+    };
+      return obj;
+
 };
+
+// exports.test = function(time){
+//
+//   if ( time == null ){
+//     return false;
+//   }
+//   else{
+//     return true;
+//   }
+//
+// }

@@ -1,4 +1,4 @@
-//app/index.js 
+//app/index.js
 
 var http = require('http') ;
 var fs = require('fs');
@@ -15,16 +15,27 @@ var monServeur=function(requete, reponse){
 	if(slug[1] != 'favicon.ico' && slug[1] != ''){
 
 		var objSlug = dates.createObjFromSlug(slug[1]);//Object qui contient les partie de la requete
-		var objTime = dates.createObjFromTime(objSlug.time);//object qui contient les 4 parties de l'ajout de date(jours, heures etc..)
-		bool = true;
+    if (objSlug.time != ""){
+      var objTime = dates.createObjFromTime(objSlug.time);//object qui contient les 4 parties de l'ajout de date(jours, heures etc..)
+      reponse.writeHead(200,{"Content-Type": "text/plain; charset=UTF-8"});
+      sortie = "La date est " + dates.getDate(objSlug);
+    }
+
+		//bool = true;
 		// faire les tests et erreur possible
 		// Pourquoi pas ajouter une fonction dans dates.js ? Hein Emma ;) Genre tu fais :
 		// var bool = dates.test(objSlug, objTime)
-		if (true) {//si c'est bon on va ici sinon on affiche une erreur
-			reponse.writeHead(200,{"Content-Type": "text/plain; charset=UTF-8"}); 
-			sortie = "La date est " + dates.getDate(objslug);
 
-		}
+    // if (false == dates.test(objSlug, objTime)) {//si c'est bon on va ici sinon on affiche une erreur
+		// 	reponse.writeHead(200,{"Content-Type": "text/plain; charset=UTF-8"});
+		// 	sortie = "L'ajout de date n'est pas valide";
+    //
+		// }
+		// else if (true == dates.test(objSlug, objTime)) {//si c'est bon on va ici sinon on affiche une erreur
+		// 	reponse.writeHead(200,{"Content-Type": "text/plain; charset=UTF-8"});
+		// 	sortie = "La date est " + dates.getDate(objSlug);
+    //
+		// }
 		else{
 			sortie = "invalid url";
 		}
@@ -40,7 +51,7 @@ var monServeur=function(requete, reponse){
 	// var slug = page.split('/');
 	// var date = new Date(slug);
 	// if(date != "Invalid Date"){
-	// 	reponse.writeHead(200,{"Content-Type": "text/plain; charset=UTF-8"}); 
+	// 	reponse.writeHead(200,{"Content-Type": "text/plain; charset=UTF-8"});
 	// 	sortie = "La date est : " + dates.date1000(date);
 	// }
 	// else{
@@ -62,5 +73,5 @@ function displayForm(res) {
 
 var serveur = http.createServer(monServeur) ;
 
-serveur.listen(8080) ; 
+serveur.listen(8080) ;
 console.log("Server listening on port 8080");
