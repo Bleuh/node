@@ -1,11 +1,5 @@
 exports.getDate = function(obj){
   return this.createNewDate(obj.date, obj.operator, obj.time);
-    // if ( obj.time != null ){
-    //   return this.createNewDate(obj.date, obj.operator, obj.time);
-    // }
-    // else{
-    //   return false;
-    // }
 };
 
 exports.createNewDate = function(date, operator, time){
@@ -96,39 +90,10 @@ exports.createObjFromSlug = function(slug){
 
 exports.createObjFromTime = function(time){
 
-  var days = time.split("d");
-  var hours = days[1].split("h");
-  var min = hours[1].split("m");
-  var sec = min[1].split("s");
-
-  // var hours;
-  // var min;
-  // var sec;
-  // if (days[1] != undefined){
-  //   hours = days[1].split("h");
-  // }
-  // else{
-  //   hours = 0;
-  // }
-  // if (hours[1] != undefined){
-  //   min = hours[1].split("m");
-  // }
-  // else{
-  //   min = 0;
-  // }
-  // if (min[1] != undefined){
-  //   sec = min[1].split("s");
-  // }
-  // else{
-  //   sec = 0;
-  // }
-
-  // if (days[1].indexOf("h") == 1){
-  //       var hours = days[1].split("h");
-  // }
-  // else{
-  //   var hours = 0;
-  // }
+	var days = time.split("d");
+	var hours = days[1].split("h");
+	var min = hours[1].split("m");
+	var sec = min[1].split("s");
 
     var obj = {
         days:days[0],
@@ -136,17 +101,29 @@ exports.createObjFromTime = function(time){
         min:min[0],
         sec:sec[0]
     };
-      return obj;
+  	return obj;
 
 };
 
-// exports.test = function(time){
-//
-//   if ( time == null ){
-//     return false;
-//   }
-//   else{
-//     return true;
-//   }
-//
-// }
+exports.test = function(obj){
+	if (obj.date == '' || obj.operator == '' || obj.time == '') {
+		return false;
+	}
+	if (new Date(obj.date) == 'Invalid Date') {
+		return false;
+	}
+	if (!this.testTime(obj.time)) {
+		return false;
+	}
+	return true;
+
+}
+
+exports.testTime = function(time){
+	//contient au moin 4 chiffres avec le patern
+	var pattern = /\d+d\d+h\d+m\d+s/g;
+	if(!pattern.test(time)){
+		return false;
+	}
+	return true;
+}
