@@ -21,6 +21,7 @@ var monServeur=function(requete, reponse){
 			sortie = "La date est " + dates.getDate(objSlug);
 	    }
 		else{
+            reponse.writeHead(400,{"Content-Type": "text/plain; charset=UTF-8"});
 			sortie = "invalid url";
 		}
 		reponse.end(sortie);
