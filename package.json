@@ -1,5 +1,5 @@
 {
-  "name": "NodeJS - Date",
+  "name": "NodeJS-Date",
   "version": "1.0.0",
   "description": "Ajout et retrait de temps à une date",
   "main": "index.js",
