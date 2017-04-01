@@ -1,33 +1,38 @@
-<html>
-   <head>
-   </head>
-   <body>
-      <form action="" method="get" enctype="multipart/form-data">
-         <fieldset>
-            <label for="date">Date:</label>
-            <input type="text" id="date" name="date" placeholder="1948-12-10T11:00:00Z"/>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+   <meta charset="UTF-8">
+   <title>NodeJS - Date</title>
+</head>
 
-            <select id="operator" name="operator">
-               <option value="+">+</option>
-               <option value="-">-</option>
-            </select>
+<body>
+   <form action="" method="get" enctype="multipart/form-data">
+      <fieldset>
+         <label for="date">Date:</label>
+         <input type="text" id="date" name="date" placeholder="1948-12-10T11:00:00Z"/>
 
-            <label for="time">Temps:</label>
-            <input type="text" id="time" name="time" placeholder="1d3h34m2s"/>
-            <button type="button" id="submit">calculer</button>
-         </fieldset>
-      </form>
-   </body>
-   <footer>
-    <script type="text/javascript">
-       document.getElementById("submit").onclick = function () {
-         var date = document.getElementById('date').value;
-         var e = document.getElementById("operator");
-         var operator = e.options[e.selectedIndex].value;
-         var time = document.getElementById('time').value;
-         var retour = date + operator + time;
-         location.href = "/" + retour;
-       };
-    </script>
-   </footer>
+         <select id="operator" name="operator">
+            <option value="+">+</option>
+            <option value="-">-</option>
+         </select>
+
+         <label for="time">Temps:</label>
+         <input type="text" id="time" name="time" placeholder="1d3h34m2s"/>
+         <button type="button" id="submit">calculer</button>
+      </fieldset>
+   </form>
+</body>
+
+<footer>
+   <script type="text/javascript">
+    document.getElementById("submit").onclick = function () {
+      var date = document.getElementById('date').value;
+      var e = document.getElementById("operator");
+      var operator = e.options[e.selectedIndex].value;
+      var time = document.getElementById('time').value;
+      var retour = date + operator + time;
+      location.href = "/" + retour;
+    };
+   </script>
+</footer>
 </html>
