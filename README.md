@@ -22,7 +22,7 @@ du moment que cette dernière respecte le format "AAAA-MM-DD".
 Une fois la date entrée, il faut choisir l'opérateur **+** ou **-**, il permettra de distinguer un 
 avancement ou un retrait temporel.
 
-Vous devez ensuite saisir la valeur temporelle souhaitée et être saisie de la façon 
+Vous devez ensuite saisir la valeur temporelle souhaitée qui doit être saisie de la façon 
 suivante : **d0h0m0s0**
 - **d** correspond aux nombres de jours
 - **h** correspond aux nombres d'heures
@@ -34,4 +34,4 @@ Exemple : d1h2 retournera une erreur, il faut saisir d1h1m0s0._
 
 Une fois toutes les valeurs renseignées, vous pouvez valider vos données via le bouton "**calculer**". 
 La date affichée est le résultat du calcul temporel au format **ISO8601**. Si le message 
-"**invalid url**" apparait, vérifier bien la saisie de vos données.
+"**invalid url**" apparait, vérifiez bien la saisie de vos données.
